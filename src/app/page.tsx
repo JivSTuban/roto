@@ -13,13 +13,48 @@ export default function Home() {
 
   useEffect(() => {
     if (videoRef.current) {
+      // Set muted state based on visibility
+      videoRef.current.muted = !isInView;
+      
+      // Try to play the video when it becomes visible
       if (isInView) {
-        videoRef.current.muted = false;
-      } else {
-        videoRef.current.muted = true;
+        const playPromise = videoRef.current.play();
+        
+        // Handle autoplay restrictions
+        if (playPromise !== undefined) {
+          playPromise.catch(_ => {
+            // Auto-play was prevented, keep the video muted and try again
+            videoRef.current!.muted = true;
+            videoRef.current!.play().catch(e => console.log("Could not autoplay video even when muted:", e));
+          });
+        }
       }
     }
   }, [isInView]);
+  
+  // Play video as soon as it loads
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    
+    // Ensure video is muted initially to allow autoplay
+    video.muted = true;
+    
+    const handleLoadedData = () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          console.log("Autoplay prevented on initial load");
+        });
+      }
+    };
+    
+    video.addEventListener('loadeddata', handleLoadedData);
+    
+    return () => {
+      video.removeEventListener('loadeddata', handleLoadedData);
+    };
+  }, []);
 
   return (
     <div className="bg-gradient-to-b from-slate-50 to-blue-50 pt-16">
@@ -60,14 +95,35 @@ export default function Home() {
               }>
                 <Canvas camera={{ position: [0, 7, 10], fov: 40 }}>
                   <ambientLight intensity={0.8} />
-                  <directionalLight position={[5, 5, 5]} intensity={1.2} castShadow />
-                  <pointLight position={[-10, 10, -5]} intensity={1} />
-                  <pointLight position={[10, -10, 0]} intensity={0.8} />
-                  <pointLight position={[0, 5, 10]} intensity={0.7} />
-                  <spotLight position={[-10, 10, 10]} angle={0.3} penumbra={1} intensity={1} castShadow />
-                  <spotLight position={[10, 5, 5]} angle={0.2} penumbra={0.8} intensity={0.8} castShadow />
-                  <Model position={[0, -2, 0]} rotation={[0, 0.5, 0]} scale={2.4} />
-                  <OrbitControls enableZoom={false} />
+                  <directionalLight position={[5, 5, 5]} intensity={1.5} castShadow />
+                  <directionalLight position={[-5, 5, -5]} intensity={1} castShadow />
+                  <pointLight position={[0, 5, 0]} intensity={1.2} />
+                  <pointLight position={[0, -5, 0]} intensity={0.8} />
+                  <spotLight 
+                    position={[0, 10, 10]} 
+                    angle={0.4} 
+                    penumbra={0.8} 
+                    intensity={1.5} 
+                    castShadow 
+                    distance={20}
+                  />
+                  <hemisphereLight 
+                    args={['#ffffff', '#bbbbff', 0.7]} 
+                  />
+                  <Model 
+                    position={[0, -1, 2]} 
+                    rotation={[0.3, 0.7, 0]} 
+                    scale={2.4} 
+                  />
+                  <OrbitControls 
+                    enableZoom={false}
+                    enablePan={false}
+                    enableRotate={true}
+                    autoRotate={false}
+                    autoRotateSpeed={1}
+                    minPolarAngle={Math.PI / 2.5}
+                    maxPolarAngle={Math.PI / 2.5}
+                  />
                 </Canvas>
               </Suspense>
             </div>
@@ -172,6 +228,7 @@ export default function Home() {
               loop
               playsInline
               controls
+              preload="auto"
             />
           </div>
         </div>

@@ -90,7 +90,7 @@ export default function Blog() {
     async function fetchPosts() {
       try {
         const result = await getBlogPosts();
-        if (result.success && result.data?.length > 0) {
+        if (result.success && Array.isArray(result.data) && result.data.length > 0) {
           setPosts(result.data);
         }
       } catch (error) {
@@ -211,7 +211,7 @@ export default function Blog() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 <p className="mt-3 text-lg">Thanks for subscribing!</p>
-                <p className="mt-1 text-sm text-gray-300">We'll send updates to your inbox.</p>
+                <p className="mt-1 text-sm text-gray-300">We&apos;ll send updates to your inbox.</p>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="mx-auto mt-10 flex max-w-md gap-x-4">

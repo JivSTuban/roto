@@ -43,7 +43,7 @@ export default function Pricing() {
                 Our comprehensive package includes lead generation, skip tracing, and lead conversion services to automate your entire sales pipeline.
               </p>
               <div className="mt-10 flex items-center gap-x-4">
-                <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">What's included</h4>
+                <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">What&apos;s included</h4>
                 <div className="h-px flex-auto bg-gray-100"></div>
               </div>
               <ul role="list" className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6">
@@ -202,7 +202,7 @@ export default function Pricing() {
             <div className="lg:col-span-5">
               <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">Frequently asked questions</h2>
               <p className="mt-4 text-base leading-7 text-gray-600">
-                Can't find the answer you're looking for? Contact our{' '}
+                Can&apos;t find the answer you&apos;re looking for? Contact our{' '}
                 <Link href="/contact" className="font-semibold text-indigo-600 hover:text-indigo-500">
                   customer support
                 </Link>{' '}
@@ -217,11 +217,11 @@ export default function Pricing() {
                 </div>
                 <div>
                   <dt className="text-base font-semibold leading-7 text-gray-900">What happens after the 10-day free trial?</dt>
-                  <dd className="mt-2 text-base leading-7 text-gray-600">After your trial period ends, you can choose to continue with a paid subscription or cancel at any time. There's no automatic billing – we'll reach out to discuss your options before the trial ends.</dd>
+                  <dd className="mt-2 text-base leading-7 text-gray-600">After your trial period ends, you can choose to continue with a paid subscription or cancel at any time. There&apos;s no automatic billing – we&apos;ll reach out to discuss your options before the trial ends.</dd>
                 </div>
                 <div>
                   <dt className="text-base font-semibold leading-7 text-gray-900">Can I customize the automation solutions for my business?</dt>
-                  <dd className="mt-2 text-base leading-7 text-gray-600">Yes, all of our automation packages can be customized to meet your specific business needs. We'll work with you to ensure our solution integrates seamlessly with your existing processes.</dd>
+                  <dd className="mt-2 text-base leading-7 text-gray-600">Yes, all of our automation packages can be customized to meet your specific business needs. We&apos;ll work with you to ensure our solution integrates seamlessly with your existing processes.</dd>
                 </div>
                 <div>
                   <dt className="text-base font-semibold leading-7 text-gray-900">How does the cold calling service work?</dt>

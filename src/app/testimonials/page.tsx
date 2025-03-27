@@ -60,7 +60,7 @@ export default function Testimonials() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Trusted by Realtors and Businesses</h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Don't just take our word for it. Here's what our clients have to say about roto's AI-powered solutions.
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about roto&apos;s AI-powered solutions.
           </p>
         </div>
         
@@ -105,7 +105,7 @@ export default function Testimonials() {
                     <span>{testimonial.title}</span>
                   </h3>
                   <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-                    "{testimonial.quote}"
+                    &quot;{testimonial.quote}&quot;
                   </p>
                 </div>
               </article>
@@ -120,7 +120,7 @@ export default function Testimonials() {
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Video Testimonials</h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Hear directly from our satisfied clients about their experience with roto's AI-powered solutions.
+              Hear directly from our satisfied clients about their experience with roto&apos;s AI-powered solutions.
             </p>
           </div>
 
@@ -157,7 +157,7 @@ export default function Testimonials() {
               <div className="relative h-full w-full flex flex-col items-center justify-center p-8 text-center z-10">
                 <h3 className="text-3xl font-bold mb-4 tracking-tight">Be Part of Our Growth Story</h3>
                 <p className="mb-8 text-white/90 text-lg max-w-xs">
-                  Join our exclusive client roster! We've successfully delivered for our first client and are currently working with a second. You could be next!
+                  Join our exclusive client roster! We&apos;ve successfully delivered for our first client and are currently working with a second. You could be next!
                 </p>
                 <button className="px-8 py-3 bg-white text-indigo-600 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg transform hover:scale-105 flex items-center">
                   Start Your Free Trial

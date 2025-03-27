@@ -2,12 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-export default function NavbarDemo() {
+export function NavbarDemo() {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,18 +18,13 @@ export default function NavbarDemo() {
   }, []);
 
   return (
-    <div
-      className={`fixed top-0 w-full ${
-        scrolled
-          ? 'border-b border-gray-200 bg-white/50 backdrop-blur-xl'
-          : 'bg-white/0'
-      } z-30 transition-all`}
-    >
-      <Menu setActive={setActive}>
-        <div className="flex items-center justify-between">
-          {/* Add your menu content here */}
-        </div>
-      </Menu>
+    <div className="fixed inset-x-0 top-0 z-50 flex justify-center p-6">
+      <div className={cn(
+        "rounded-full transition-colors duration-200 w-fit isolate",
+        scrolled ? "bg-white/70 backdrop-blur-sm border border-black/[0.08]" : "bg-white/50"
+      )}>
+        <Navbar />
+      </div>
     </div>
   );
 }
@@ -38,7 +32,6 @@ export default function NavbarDemo() {
 function Navbar() {
   const [active, setActive] = useState<string | null>(null);
   const pathname = usePathname();
-  const router = useRouter();
   const isPricingPage = pathname === '/pricing';
 
   // Simple scroll function to handle smooth scrolling to sections on the page

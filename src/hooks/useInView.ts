@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, RefObject, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export function useInView() {
   const ref = useRef<HTMLDivElement>(null)

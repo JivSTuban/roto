@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Register() {
   const [email, setEmail] = useState('');
@@ -29,8 +28,8 @@ export default function Register() {
     try {
       await register(email, password);
       router.push('/dashboard');
-    } catch (err: any) {
-      setError(err.message || 'Failed to create account');
+    } catch (err: Error | unknown) {
+      setError(err instanceof Error ? err.message : 'Failed to create account');
     } finally {
       setIsLoading(false);
     }

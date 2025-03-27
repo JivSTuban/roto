@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import supabase from '@/lib/supabase';
 import Link from 'next/link';
 import Image from 'next/image';
+import { AuthError } from '@supabase/supabase-js';
 
-export default function ResetPassword() {
+function ResetPasswordForm() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -67,8 +68,8 @@ export default function ResetPassword() {
         router.push('/login');
       }, 3000);
       
-    } catch (err: any) {
-      setError(err.message || 'Failed to reset password');
+    } catch (err: AuthError | unknown) {
+      setError(err instanceof AuthError ? err.message : 'Failed to reset password');
     } finally {
       setIsLoading(false);
     }
@@ -186,5 +187,18 @@ export default function ResetPassword() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ResetPassword() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+        <p className="ml-3 text-indigo-600">Loading...</p>
+      </div>
+    }>
+      <ResetPasswordForm />
+    </Suspense>
   );
 } 

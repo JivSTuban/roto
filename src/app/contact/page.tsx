@@ -307,7 +307,7 @@ export default function Contact() {
             <div className="lg:col-span-5">
               <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">Frequently asked questions</h2>
               <p className="mt-4 text-base leading-7 text-gray-600">
-                Can't find the answer you're looking for? Reach out to our{' '}
+                Can&apos;t find the answer you&apos;re looking for? Reach out to our{' '}
                 <Link href="/contact" className="font-semibold text-indigo-600 hover:text-indigo-500">
                   customer support
                 </Link>{' '}
