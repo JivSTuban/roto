@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60">
+  <rect x="30" y="15" width="5" height="30" fill="#333"/>
+  <rect x="40" y="15" width="5" height="30" fill="#333"/>
+  <rect x="50" y="15" width="5" height="30" fill="#333"/>
+  <rect x="60" y="15" width="5" height="30" fill="#333"/>
+  <rect x="70" y="15" width="5" height="30" fill="#333"/>
+  <rect x="30" y="15" width="45" height="5" fill="#333"/>
+  <rect x="30" y="40" width="45" height="5" fill="#333"/>
+  <text x="85" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">DISCIPLINE.FE</text>
+</svg> 
