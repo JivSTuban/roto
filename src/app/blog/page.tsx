@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { getBlogPosts, subscribeToNewsletter } from "@/lib/api";
 
 export default function Blog() {
@@ -136,7 +135,7 @@ export default function Blog() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Blog & Resources</h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Insights, trends, and tips on AI automation, lead generation, and business optimization.
+            We&apos;re excited to share our latest insights and updates with you.
           </p>
         </div>
         
