@@ -23,7 +23,7 @@ export default function Testimonials() {
       id: 1,
       name: "Sarah Johnson",
       role: "Realtor, Century 21",
-      image: "/images/testimonial-1.jpg",
+      image: "/images/avatarPlaceholder.jpg",
       rating: 5,
       title: "Lead generation game-changer",
       quote: "roto's AI saved me 20 hours a week and doubled my closings. The lead generation and automated follow-ups allow me to focus on what I do best - closing deals. It's like having a full-time assistant working 24/7.",
@@ -94,6 +94,7 @@ export default function Testimonials() {
         if (result.success && result.data && result.data.length > 0) {
           setTestimonials(result.data as typeof testimonials);
         }
+       
       } catch (error) {
         console.error("Error fetching testimonials:", error);
         setError("Unable to load testimonials. Please try again later.");
@@ -167,7 +168,7 @@ export default function Testimonials() {
               <article key={testimonial.id} className="flex flex-col items-start justify-between rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-200">
                 <div className="relative flex items-center gap-x-4">
                   <Image 
-                    src={testimonial.image || "/images/testimonial-placeholder.jpg"} 
+                    src={"/images/avatarPlaceholder.jpg"} 
                     alt={testimonial.name} 
                     className="h-10 w-10 rounded-full bg-gray-100" 
                     width={40} 

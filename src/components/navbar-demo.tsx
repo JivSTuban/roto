@@ -81,7 +81,7 @@ function Navbar() {
       </MenuItem>
       <MenuItem setActive={setActive} active={active} item="Company">
         <div className="flex flex-col space-y-4 text-sm min-w-[180px] p-3">
-          <HoveredLink href="/blog">Blog & Updates</HoveredLink>
+          {/* <HoveredLink href="/blog">Blog & Updates</HoveredLink> */}
           <HoveredLink href="/testimonials">Customer Stories</HoveredLink>
           <HoveredLink href="/contact">Contact Sales</HoveredLink>
         </div>
