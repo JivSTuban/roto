@@ -15,6 +15,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "roto",
   description: "AI-powered solutions for businesses",
+  icons: {
+    icon: "/rotoDot.jpg"
+  }
 };
 
 export default function RootLayout({
