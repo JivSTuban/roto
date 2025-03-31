@@ -1,41 +1,40 @@
-import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
-import "./globals.css"
-import { NavbarDemo } from "@/components/navbar-demo"
-import Footer from "@/components/Footer"
-import { AuthProvider } from "@/context/AuthContext"
+import './globals.css';
+import 'next-cloudinary/dist/cld-video-player.css';
+import { Inter } from "next/font/google";
+import { Metadata } from "next";
+import { NavbarDemo } from "@/components/navbar-demo";
+import Footer from "@/components/Footer";
+import { AuthProvider } from "@/context/AuthContext";
+import { Providers } from './providers';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
-  title: "roto | AI-Powered Solutions for Realtors & Businesses",
-  description: "Automate your real estate business with AI. roto provides lead generation, skip tracing, and lead conversion services for realtors and AI automation for businesses.",
-}
+  title: "roto",
+  description: "AI-powered solutions for businesses",
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+      <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
         <AuthProvider>
-          <NavbarDemo />
-          <div className="flex-1">
-            <main>{children}</main>
-          </div>
+          <Providers>
+            <NavbarDemo />
+            <div className="flex-1">
+              <main>{children}</main>
+            </div>
+          </Providers>
           <Footer />
         </AuthProvider>
       </body>
     </html>
-  )
+  );
 }

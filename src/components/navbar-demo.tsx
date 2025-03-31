@@ -54,13 +54,13 @@ function Navbar() {
           <div className="grid grid-cols-2 gap-6">
             <ProductItem
               title="Lead Generation"
-              href="/services#lead-generation"
+              href="/services#realtor-services"
               src="https://img.freepik.com/free-vector/generating-new-leads-concept-illustration_114360-7394.jpg"
               description="AI-powered lead generation and qualification system"
             />
             <ProductItem
               title="Skip Tracing"
-              href="/services#skip-tracing"
+              href="/services#realtor-services"
               src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?q=80&w=4740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               description="Advanced contact discovery and verification"
             />

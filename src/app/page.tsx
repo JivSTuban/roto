@@ -6,6 +6,7 @@ import { Suspense, useRef, useEffect, useState } from "react"
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei"
 import { Model } from "@/components/3d_robot"
+import Image from 'next/image'
 
 export default function Home() {
   const { ref, isInView } = useInView()
@@ -206,7 +207,7 @@ export default function Home() {
             <video
               ref={videoRef}
               className="absolute inset-0 w-full h-full object-cover bg-white/5 ring-1 ring-white/10"
-              src="/videos/IMG_8169.MOV"
+              src="https://res.cloudinary.com/dottgoo0p/video/upload/v1/testimonials/IMG_8169"
               loop
               playsInline
               preload="auto"

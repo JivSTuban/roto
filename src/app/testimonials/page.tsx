@@ -1,11 +1,22 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { getTestimonials } from "@/lib/api";
 import { useInView } from "@/hooks/useInView";
+import { CldVideoPlayer } from 'next-cloudinary';
+import 'next-cloudinary/dist/cld-video-player.css';
+
+interface VideoTestimonial {
+  id: number;
+  videoId?: string;
+  title: string;
+  description: string;
+  isInvitation?: boolean;
+}
 
 export default function Testimonials() {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [testimonials, setTestimonials] = useState([
     // Fallback data
     {
@@ -23,9 +34,59 @@ export default function Testimonials() {
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const videoRef = useRef<HTMLVideoElement>(null);
   const { ref, isInView } = useInView();
   
+  const videoTestimonials: VideoTestimonial[] = [
+    {
+      id: 1,
+      videoId: "testimonials/IMG_8169",
+      title: "Client Success Story",
+      description: "Watch how roto transformed our client's business"
+    },
+    {
+      id: 2,
+      isInvitation: true,
+      title: "Be Part of Our Growth Story",
+      description: "Join our exclusive client roster! We've successfully delivered for our first client and are currently working with a second. You could be next!"
+    }
+  ];
+
+  const nextSlide = () => {
+    // Pause current video if it exists
+    const currentVideoId = `video-testimonial-${videoTestimonials[currentSlide].id}`;
+    const playerElement = document.getElementById(currentVideoId);
+    if (playerElement && !videoTestimonials[currentSlide].isInvitation) {
+      try {
+        const videoElement = playerElement.querySelector('video');
+        if (videoElement) {
+          videoElement.pause();
+        }
+      } catch (error) {
+        console.error("Error pausing video:", error);
+      }
+    }
+    
+    setCurrentSlide((prev) => (prev + 1) % videoTestimonials.length);
+  };
+
+  const prevSlide = () => {
+    // Pause current video if it exists
+    const currentVideoId = `video-testimonial-${videoTestimonials[currentSlide].id}`;
+    const playerElement = document.getElementById(currentVideoId);
+    if (playerElement && !videoTestimonials[currentSlide].isInvitation) {
+      try {
+        const videoElement = playerElement.querySelector('video');
+        if (videoElement) {
+          videoElement.pause();
+        }
+      } catch (error) {
+        console.error("Error pausing video:", error);
+      }
+    }
+    
+    setCurrentSlide((prev) => (prev - 1 + videoTestimonials.length) % videoTestimonials.length);
+  };
+
   useEffect(() => {
     async function fetchTestimonials() {
       try {
@@ -44,15 +105,41 @@ export default function Testimonials() {
     fetchTestimonials();
   }, []);
 
-  // Control video playback when in view
+  // Add this useEffect to handle video initialization
   useEffect(() => {
-    if (videoRef.current && isInView) {
-      // Try to play the video when it's in view
-      videoRef.current.play().catch(e => {
-        console.log("Error attempting to play video:", e);
-      });
-    }
-  }, [isInView]);
+    if (!isInView) return;
+    
+    // Small delay to ensure DOM is fully rendered
+    const timer = setTimeout(() => {
+      const testimonial = videoTestimonials[currentSlide];
+      if (!testimonial.isInvitation && testimonial.videoId) {
+        const videoId = `video-testimonial-${testimonial.id}`;
+        const videoElement = document.getElementById(videoId);
+        
+        if (videoElement) {
+          // Cloudinary player might have custom API, direct video element manipulation might not work
+          // Instead of videoElement.load(), we'll just try to play if it's the current slide
+          const videoPlayer = videoElement as HTMLElement;
+          
+          // Try to play if visible
+          try {
+            // Find the actual video element inside the Cloudinary player
+            const actualVideoElement = videoPlayer.querySelector('video');
+            if (actualVideoElement && isInView) {
+              actualVideoElement.play().catch(error => {
+                console.log("Autoplay prevented:", error);
+                // Video will need user interaction to play
+              });
+            }
+          } catch (error) {
+            console.error("Error trying to play video:", error);
+          }
+        }
+      }
+    }, 300);
+    
+    return () => clearTimeout(timer);
+  }, [currentSlide, isInView, videoTestimonials]);
 
   return (
     <div className="bg-white py-24 sm:py-32">
@@ -120,52 +207,105 @@ export default function Testimonials() {
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Video Testimonials</h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Hear directly from our satisfied clients about their experience with roto&apos;s AI-powered solutions.
+              Hear directly from our satisfied clients about their experience with roto.
             </p>
           </div>
 
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-            <div className="h-[400px] overflow-hidden rounded-lg shadow-lg" ref={ref}>
-              <video
-                ref={videoRef}
-                className="h-full w-full object-cover bg-white/5"
-                src="/videos/IMG_8169.MOV"
-                playsInline
-                loop
-                controls
-                poster="/images/video-thumbnail.jpg"
-                autoPlay={isInView}
-              />
+          <div className="mx-auto mt-16 relative" ref={ref}>
+            {/* Container for the video and navigation */}
+            <div className="relative w-full aspect-video overflow-visible rounded-lg shadow-lg">
+              {/* Video testimonials */}
+              {videoTestimonials.map((testimonial, index) => (
+                <div
+                  key={testimonial.id}
+                  data-slide-index={index}
+                  className={`absolute w-full h-full transition-opacity duration-500 ease-in-out ${
+                    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                >
+                  {testimonial.isInvitation ? (
+                    <div className="h-full w-full relative bg-gradient-to-br from-indigo-600 via-indigo-500 to-blue-600 text-white">
+                      {/* Background pattern */}
+                      <div className="absolute inset-0 opacity-10">
+                        <svg className="h-full w-full" width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                          <defs>
+                            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
+                            </pattern>
+                          </defs>
+                          <rect width="100%" height="100%" fill="url(#grid)" />
+                        </svg>
+                      </div>
+                      
+                      {/* Decorative circles */}
+                      <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white opacity-10"></div>
+                      <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-white opacity-10"></div>
+                      
+                      <div className="relative h-full w-full flex flex-col items-center justify-center p-8 text-center z-10">
+                        <h3 className="text-3xl font-bold mb-4 tracking-tight">{testimonial.title}</h3>
+                        <p className="mb-8 text-white/90 text-lg max-w-xs">
+                          {testimonial.description}
+                        </p>
+                        <button className="px-8 py-3 bg-white text-indigo-600 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg transform hover:scale-105 flex items-center">
+                          Start Your Free Trial
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  ) : testimonial.videoId ? (
+                    <div className="relative w-full h-full">
+                      <CldVideoPlayer
+                        width="1920"
+                        height="1080"
+                        src={testimonial.videoId}
+                        autoplay={isInView ? "always" : "never"}
+                        muted={true}
+                        loop
+                        controls
+                        id={`video-testimonial-${testimonial.id}`}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+              ))}
             </div>
-            <div className="h-[400px] overflow-hidden rounded-lg shadow-xl relative bg-gradient-to-br from-indigo-600 via-indigo-500 to-blue-600 text-white">
-              {/* Background pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <svg className="h-full w-full" width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#grid)" />
-                </svg>
-              </div>
-              
-              {/* Decorative circles */}
-              <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white opacity-10"></div>
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-white opacity-10"></div>
-              
-              <div className="relative h-full w-full flex flex-col items-center justify-center p-8 text-center z-10">
-                <h3 className="text-3xl font-bold mb-4 tracking-tight">Be Part of Our Growth Story</h3>
-                <p className="mb-8 text-white/90 text-lg max-w-xs">
-                  Join our exclusive client roster! We&apos;ve successfully delivered for our first client and are currently working with a second. You could be next!
-                </p>
-                <button className="px-8 py-3 bg-white text-indigo-600 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg transform hover:scale-105 flex items-center">
-                  Start Your Free Trial
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
+
+            {/* Navigation buttons - now outside the slider container */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-8 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/40 p-4 rounded-full transition-all duration-200 z-50 border border-white/20"
+              aria-label="Previous slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-8 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/40 p-4 rounded-full transition-all duration-200 z-50 border border-white/20"
+              aria-label="Next slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Slide indicators */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-4 z-50">
+              {videoTestimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'w-6 h-1.5 bg-white' 
+                      : 'w-1.5 h-1.5 bg-white/40 hover:bg-white/60'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>

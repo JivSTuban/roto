@@ -350,7 +350,7 @@ export default function Services() {
                 
                 {/* For Realtors Section */}
                 <CarouselItem className="w-full">
-                  <div className="bg-white py-12 sm:py-16 min-h-[800px] flex flex-col">
+                  <div id="realtor-services" className="bg-white py-12 sm:py-16 min-h-[800px] flex flex-col">
                     <div className="mx-auto max-w-7xl">
                       <div className="mx-auto max-w-2xl lg:mx-0">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">For Realtors</h2>
@@ -489,7 +489,7 @@ export default function Services() {
 
                 {/* For Businesses Section */}
                 <CarouselItem className="w-full">
-                  <div className="bg-white py-12 sm:py-16 min-h-[800px] flex flex-col">
+                  <div id="ai-automation" className="bg-white py-12 sm:py-16 min-h-[800px] flex flex-col">
                     <div className="mx-auto max-w-7xl">
                       <div className="mx-auto max-w-2xl lg:mx-0">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">For Businesses</h2>
