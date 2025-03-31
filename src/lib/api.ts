@@ -1,4 +1,5 @@
 import supabase from './supabase';
+import emailjs from '@emailjs/browser';
 
 // Contact form submission
 export async function submitContactForm(formData: {
@@ -11,12 +12,23 @@ export async function submitContactForm(formData: {
   interest: string;
 }) {
   try {
-    const { data, error } = await supabase
-      .from('contact_submissions')
-      .insert([formData]);
-    
-    if (error) throw error;
-    return { success: true, data };
+    // Send email using EmailJS
+    await emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+      {
+        interests: formData.interest,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        message: formData.message
+      },
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    );
+
+    return { success: true };
   } catch (error) {
     console.error('Error submitting contact form:', error);
     return { success: false, error };
@@ -88,4 +100,4 @@ export async function getTestimonials() {
     console.error('Error fetching testimonials:', error);
     return { success: false, error };
   }
-} 
+}
