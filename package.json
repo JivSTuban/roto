@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@radix-ui/react-slot": "^1.1.2",
     "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.0",
     "@supabase/supabase-js": "^2.49.1",

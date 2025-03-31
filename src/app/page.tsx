@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useInView } from "@/hooks/useInView"
-import { Suspense, useRef, useEffect } from "react"
+import { Suspense, useRef, useEffect, useState } from "react"
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei"
 import { Model } from "@/components/3d_robot"
@@ -10,51 +10,35 @@ import { Model } from "@/components/3d_robot"
 export default function Home() {
   const { ref, isInView } = useInView()
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
 
+  // Handle video visibility
   useEffect(() => {
     if (videoRef.current) {
-      // Set muted state based on visibility
-      videoRef.current.muted = !isInView;
-      
-      // Try to play the video when it becomes visible
-      if (isInView) {
-        const playPromise = videoRef.current.play();
-        
-        // Handle autoplay restrictions
-        if (playPromise !== undefined) {
-          playPromise.catch(_ => {
-            // Auto-play was prevented, keep the video muted and try again
-            videoRef.current!.muted = true;
-            videoRef.current!.play().catch(e => console.log("Could not autoplay video even when muted:", e));
-          });
-        }
+      const video = videoRef.current;
+      if (!isInView) {
+        video.pause();
+        setIsPlaying(false);
       }
     }
   }, [isInView]);
-  
-  // Play video as soon as it loads
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    
-    // Ensure video is muted initially to allow autoplay
-    video.muted = true;
-    
-    const handleLoadedData = () => {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          console.log("Autoplay prevented on initial load");
+
+  const handlePlayPause = () => {
+    if (videoRef.current) {
+      const video = videoRef.current;
+      if (isPlaying) {
+        video.pause();
+      } else {
+        video.play().then(() => {
+          video.muted = false;
+          video.volume = 1.0;
+        }).catch(() => {
+          video.muted = true;
         });
       }
-    };
-    
-    video.addEventListener('loadeddata', handleLoadedData);
-    
-    return () => {
-      video.removeEventListener('loadeddata', handleLoadedData);
-    };
-  }, []);
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   return (
     <div className="bg-gradient-to-b from-slate-50 to-blue-50 pt-16">
@@ -223,13 +207,22 @@ export default function Home() {
               ref={videoRef}
               className="absolute inset-0 w-full h-full object-cover bg-white/5 ring-1 ring-white/10"
               src="/videos/IMG_8169.MOV"
-              autoPlay
-              muted
               loop
               playsInline
-              controls
               preload="auto"
+              muted
             />
+            <button
+              onClick={handlePlayPause}
+              className="absolute inset-0 flex items-center justify-center hover:bg-black/10 transition-colors duration-200"
+              aria-label={isPlaying ? "Pause video" : "Play video"}
+            >
+              {!isPlaying && (
+                <svg className="w-16 h-16 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </div>
