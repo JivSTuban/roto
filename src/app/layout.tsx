@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "roto",
   description: "AI-powered solutions for businesses",
   icons: {
-    icon: "/rotoDot.jpg"
+    icon: "/dotLOGO.svg"
   }
 };
 

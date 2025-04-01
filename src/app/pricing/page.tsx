@@ -31,7 +31,7 @@ export default function Pricing() {
       <div className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Realtor Package</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Investor  Package</h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               A complete solution to automate your lead pipeline and deliver qualified clients. Pay only for qualified leads.
             </p>
@@ -92,7 +92,7 @@ export default function Pricing() {
                   <p className="mt-6 flex items-baseline justify-center gap-x-2">
                     <span className="text-3xl font-bold tracking-tight text-gray-500 relative inline-block">
                       <span className="absolute inset-0 flex items-center justify-center">
-                        <span className="h-[4px] w-[90%] bg-red-600 absolute transform rotate-[45deg] -translate-y-[3px] shadow-sm"></span>
+                        <span className="ml-6 h-[5px] w-[100%] bg-red-600 absolute transform rotate-[40deg] -translate-y-[px] shadow-sm"></span>
                       </span>
                       $99
                     </span>

@@ -118,14 +118,14 @@ export const Menu = ({
             </Link>
           ) : (
             <>
-              <Link 
+              {/* <Link 
                 href="/login" 
                 className="text-sm font-medium text-black/70 hover:text-black transition-colors"
               >
                 Sign in
-              </Link>
+              </Link> */}
               <Link 
-                href="/register"
+                href="/login"
                 className="text-sm bg-indigo-600 text-white font-medium px-4 py-2 rounded-full hover:bg-indigo-700 transition-colors"
               >
                 Get Started
