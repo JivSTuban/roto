@@ -90,8 +90,19 @@ export default function Pricing() {
                 <div className="mx-auto max-w-xs px-8">
                   <p className="text-base font-semibold text-gray-600">Pay only for qualified leads</p>
                   <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                    <span className="text-5xl font-bold tracking-tight text-gray-900">$99</span>
+                    <span className="text-3xl font-bold tracking-tight text-gray-500 relative inline-block">
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="h-[4px] w-[90%] bg-red-600 absolute transform rotate-[45deg] -translate-y-[3px] shadow-sm"></span>
+                      </span>
+                      $99
+                    </span>
+                    <span className="text-5xl font-bold tracking-tight text-gray-900 relative inline-block">
+                      $0
+                    </span>
                     <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">per qualified lead</span>
+                  </p>
+                  <p className="mt-3 text-sm font-semibold text-indigo-600">
+                    Free trial for first 5 costumers!
                   </p>
                   <p className="mt-3 text-xs leading-5 text-gray-600">
                     No monthly fee. No minimum commitment. Cancel anytime.
@@ -234,4 +245,4 @@ export default function Pricing() {
       </div>
     </div>
   );
-} 
+}

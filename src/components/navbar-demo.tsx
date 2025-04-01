@@ -32,7 +32,7 @@ export function NavbarDemo() {
 function Navbar() {
   const [active, setActive] = useState<string | null>(null);
   const pathname = usePathname();
-  // const isPricingPage = pathname === '/pricing';
+   const isPricingPage = pathname === '/pricing';
 
   // Simple scroll function to handle smooth scrolling to sections on the page
   const scrollToSection = (sectionId: string) => {
@@ -86,7 +86,7 @@ function Navbar() {
           <HoveredLink href="/contact">Contact Sales</HoveredLink>
         </div>
       </MenuItem>
-      {/* <MenuItem setActive={setActive} active={active} item="Pricing" href="/pricing">
+      <MenuItem setActive={setActive} active={active} item="Pricing" href="/pricing">
         <div className="flex flex-col space-y-4 text-sm min-w-[180px] p-3">
           {isPricingPage ? (
             <>
@@ -114,7 +114,7 @@ function Navbar() {
             </>
           )}
         </div>
-      </MenuItem> */}
+      </MenuItem>
     </Menu>
   );
 }
