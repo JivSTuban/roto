@@ -88,7 +88,9 @@ export default function Pricing() {
             <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
               <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                 <div className="mx-auto max-w-xs px-8">
-                  <p className="text-base font-semibold text-gray-600">Pay only for qualified leads</p>
+                <p className="mt-1 text-md font-semibold text-indigo-600">
+                    Free trial for first 5 costumers!
+                  </p>
                   <p className="mt-6 flex items-baseline justify-center gap-x-2">
                     <span className="text-3xl font-bold tracking-tight text-gray-500 relative inline-block">
                       <span className="absolute inset-0 flex items-center justify-center">
@@ -101,11 +103,17 @@ export default function Pricing() {
                     </span>
                     <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">per qualified lead</span>
                   </p>
-                  <p className="mt-3 text-sm font-semibold text-indigo-600">
-                    Free trial for first 5 costumers!
+                  <p className="mt-1 text-sm font-semibold text-green-600">
+                    - 5 pre qualified leads!
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-green-600">
+                    - 100 free skip tracing!
+                  </p>  
+                  <p className="mt-1 text-sm font-semibold text-green-600">
+                    - workflow automation demo!     
                   </p>
                   <p className="mt-3 text-xs leading-5 text-gray-600">
-                    No monthly fee. No minimum commitment. Cancel anytime.
+                  <strong className="font-semibold  text-gray-800">No monthly fees</strong>. No minimum commitment. Cancel anytime.
                   </p>
                   <Link href="/contact" className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Get started
@@ -132,10 +140,29 @@ export default function Pricing() {
                 <h3 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Automation</h3>
                 <p className="mt-4 text-base leading-7 text-gray-600">AI automation solutions for customer service, email marketing, and workflows.</p>
                 <p className="mt-6 flex items-baseline gap-x-1">
-                  <span className="text-4xl font-bold tracking-tight text-gray-900">$299</span>
+                  <span className="text-3xl font-bold tracking-tight text-gray-900 relative inline-block">
+                    $299
+                  </span>
                   <span className="text-sm font-semibold leading-6 text-gray-600">/month</span>
                 </p>
+                <p className="mt-1 text-sm font-semibold text-green-600 flex items-center gap-x-1">
+                  - 10 days free trial
+                  <span className="group relative">
+                    <svg className="h-4 w-4 text-gray-500 cursor-help" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
+                    </svg>
+                    <span className="invisible group-hover:visible absolute -top-1 left-6 w-48 bg-gray-900 text-white text-md rounded-lg py-2 px-3 z-10">
+                    We will discuss further details after the free trial period. Your monthly plan will commence after the aggreement is signed.
+                    </span>
+                  </span>
+                </p>
                 <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
+                <li className="flex gap-x-3">
+                    <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                    </svg>
+                    No setup fee
+                  </li>
                   <li className="flex gap-x-3">
                     <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
@@ -165,13 +192,13 @@ export default function Pricing() {
                   Start free trial
                 </Link>
               </div>
-              <div className="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10">
+<div className="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 flex flex-col h-full">
                 <h3 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Software Solutions</h3>
                 <p className="mt-4 text-base leading-7 text-gray-600">Custom software and integration solutions tailored to your business needs.</p>
                 <p className="mt-6 flex items-baseline gap-x-1">
                   <span className="text-4xl font-bold tracking-tight text-gray-900">Custom</span>
                 </p>
-                <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
+                <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600 flex-grow">
                   <li className="flex gap-x-3">
                     <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
@@ -197,7 +224,7 @@ export default function Pricing() {
                     Dedicated support
                   </li>
                 </ul>
-                <Link href="/contact" className="mt-8 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <Link href="/contact" className="mt-auto block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                   Contact for quote
                 </Link>
               </div>
@@ -224,7 +251,7 @@ export default function Pricing() {
               <dl className="space-y-10">
                 <div>
                   <dt className="text-base font-semibold leading-7 text-gray-900">How does the pay-per-qualified-lead model work?</dt>
-                  <dd className="mt-2 text-base leading-7 text-gray-600">You only pay when we deliver a qualified lead who is actively interested in selling their property. No monthly fees, no setup costs, and no risk.</dd>
+                  <dd className="mt-2 text-base leading-7 text-gray-600">You only pay when we deliver a qualified lead who is actively interested in selling their property. <strong className="font-semibold">No monthly fees</strong>, no setup costs, and no risk.</dd>
                 </div>
                 <div>
                   <dt className="text-base font-semibold leading-7 text-gray-900">What happens after the 10-day free trial?</dt>
