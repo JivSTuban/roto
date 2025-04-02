@@ -104,14 +104,12 @@ export default function Pricing() {
                     <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">per qualified lead</span>
                   </p>
                   <p className="mt-1 text-sm font-semibold text-green-600">
-                    - 5 pre qualified leads!
+                    - 5 free prequalified leads!
                   </p>
                   <p className="mt-1 text-sm font-semibold text-green-600">
                     - 100 free skip tracing!
                   </p>  
-                  <p className="mt-1 text-sm font-semibold text-green-600">
-                    - workflow automation demo!     
-                  </p>
+                
                   <p className="mt-3 text-xs leading-5 text-gray-600">
                   <strong className="font-semibold  text-gray-800">No monthly fees</strong>. No minimum commitment. Cancel anytime.
                   </p>
@@ -135,34 +133,35 @@ export default function Pricing() {
             </p>
           </div>
           <div className="mx-auto mt-20 max-w-5xl">
-            <div className="grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-2">
-              <div className="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-2">
+              <div className="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-12 bg-white hover:shadow-md transition-shadow duration-300 flex flex-col">
                 <h3 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Automation</h3>
-                <p className="mt-4 text-base leading-7 text-gray-600">AI automation solutions for customer service, email marketing, and workflows.</p>
-                <p className="mt-6 flex items-baseline gap-x-1">
-                  <span className="text-3xl font-bold tracking-tight text-gray-900 relative inline-block">
-                    $299
-                  </span>
-                  <span className="text-sm font-semibold leading-6 text-gray-600">/month</span>
-                </p>
-                <p className="mt-1 text-sm font-semibold text-green-600 flex items-center gap-x-1">
-                  - 10 days free trial
+                <p className="mt-5 text-base leading-7 text-gray-600">AI automation solutions for customer service, email marketing, and workflows.</p>
+                
+                <div className="mt-6">
+                  <p className="text-4xl font-bold tracking-tight text-gray-900">$0 <span className="text-lg font-semibold tracking-normal text-gray-600">setup fee</span></p>
+                  <p className="mt-1 flex items-baseline gap-x-1">
+                    <span className="text-xl font-medium tracking-tight text-gray-500 relative inline-block">
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="ml-0.5 h-[2px] w-[110%] bg-red-500 absolute transform rotate-[15deg] -translate-y-[1px]"></span>
+                      </span>
+                      
+                    </span>
+                  </p>
+                </div>
+
+                <p className="mt-2 text-sm font-semibold text-green-600 flex items-center gap-x-1">
+                  ✓ 10 days free trial
                   <span className="group relative">
-                    <svg className="h-4 w-4 text-gray-500 cursor-help" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="h-4 w-4 text-gray-500 cursor-help ml-1" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
                     </svg>
-                    <span className="invisible group-hover:visible absolute -top-1 left-6 w-48 bg-gray-900 text-white text-md rounded-lg py-2 px-3 z-10">
-                    We will discuss further details after the free trial period. Your monthly plan will commence after the aggreement is signed.
+                    <span className="invisible group-hover:visible absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 bg-gray-900 text-white text-xs rounded-lg py-2 px-3 z-10 shadow-md">
+                      Monthly plan starts after trial & agreement. No hidden fees.
                     </span>
                   </span>
                 </p>
-                <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
-                <li className="flex gap-x-3">
-                    <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                    </svg>
-                    No setup fee
-                  </li>
+                <ul role="list" className="mt-6 space-y-4 text-sm leading-6 text-gray-600 flex-grow">
                   <li className="flex gap-x-3">
                     <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
@@ -185,46 +184,129 @@ export default function Pricing() {
                     <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                     </svg>
-                    Analytics dashboard
-                  </li>
-                </ul>
-                <Link href="/contact" className="mt-8 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                  Start free trial
-                </Link>
-              </div>
-<div className="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 flex flex-col h-full">
-                <h3 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Software Solutions</h3>
-                <p className="mt-4 text-base leading-7 text-gray-600">Custom software and integration solutions tailored to your business needs.</p>
-                <p className="mt-6 flex items-baseline gap-x-1">
-                  <span className="text-4xl font-bold tracking-tight text-gray-900">Custom</span>
-                </p>
-                <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600 flex-grow">
-                  <li className="flex gap-x-3">
-                    <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                    </svg>
-                    Custom AI solutions
+                    AI-powered chatbots
                   </li>
                   <li className="flex gap-x-3">
                     <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                     </svg>
-                    Integration services
+                    Custom Zapier/Make/n8n integrations
                   </li>
                   <li className="flex gap-x-3">
                     <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                     </svg>
-                    Scalable infrastructure
-                  </li>
-                  <li className="flex gap-x-3">
-                    <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                    </svg>
-                    Dedicated support
+                    Data entry automation
                   </li>
                 </ul>
                 <Link href="/contact" className="mt-auto block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  Start free trial
+                </Link>
+              </div>
+              <div className="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-12 bg-white hover:shadow-md transition-shadow duration-300 flex flex-col">
+                <h3 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Software Solutions</h3>
+                <div className="mt-2 inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs text-indigo-600 ring-1 ring-inset ring-indigo-500/10 w-fit">
+                  Enterprise Ready
+                </div>
+                <p className="mt-5 text-base leading-7 text-gray-600">Custom software and integration solutions tailored to your business needs.</p>
+                <p className="mt-8 flex items-baseline gap-x-1">
+                  <span className="text-4xl font-bold tracking-tight text-gray-900">Custom</span>
+                </p>
+                <div className="mt-10 grid grid-cols-1 gap-6 text-sm leading-6 text-gray-600 flex-grow">
+                  <div className="group relative">
+                    {/* Header */}
+                    <div className="flex items-center justify-between cursor-pointer bg-indigo-50/50 rounded-lg p-3 transition-all duration-300 hover:bg-indigo-50">
+                      <h4 className="text-sm font-medium text-gray-900">Core Solutions</h4>
+                      <svg className="h-5 w-5 text-gray-500 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                    {/* Dropdown Content */}
+                    <ul className="absolute top-full left-0 z-10 mt-1 w-full space-y-2 rounded-md bg-white p-3 shadow-lg ring-1 ring-gray-900/5 opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 transform scale-95 group-hover:scale-100 origin-top">
+                      <li className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                        </svg>
+                        Custom AI solutions
+                      </li>
+                      <li className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                        </svg>
+                        Integration services
+                      </li>
+                      <li className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                        </svg>
+                        Scalable infrastructure
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="group relative">
+                    {/* Header */}
+                    <div className="flex items-center justify-between cursor-pointer bg-indigo-50/50 rounded-lg p-3 transition-all duration-300 hover:bg-indigo-50">
+                      <h4 className="text-sm font-medium text-gray-900">Web & Mobile</h4>
+                      <svg className="h-5 w-5 text-gray-500 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                    {/* Dropdown Content */}
+                    <ul className="absolute top-full left-0 z-10 mt-1 w-full space-y-2 rounded-md bg-white p-3 shadow-lg ring-1 ring-gray-900/5 opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 transform scale-95 group-hover:scale-100 origin-top">
+                      <li className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                        </svg>
+                        Custom websites
+                      </li>
+                      <li className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                        </svg>
+                        Mobile applications
+                      </li>
+                      <li className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                        </svg>
+                        Progressive web apps
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="group relative">
+                    {/* Header */}
+                    <div className="flex items-center justify-between cursor-pointer bg-indigo-50/50 rounded-lg p-3 transition-all duration-300 hover:bg-indigo-50">
+                      <h4 className="text-sm font-medium text-gray-900">Browser & E-commerce</h4>
+                      <svg className="h-5 w-5 text-gray-500 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                    {/* Dropdown Content */}
+                    <ul className="absolute top-full left-0 z-10 mt-1 w-full space-y-2 rounded-md bg-white p-3 shadow-lg ring-1 ring-gray-900/5 opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 transform scale-95 group-hover:scale-100 origin-top">
+                      <li className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                        </svg>
+                        Chrome extensions
+                      </li>
+                      <li className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                        </svg>
+                        E-commerce solutions
+                      </li>
+                      <li className="flex gap-x-3">
+                        <svg className="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                        </svg>
+                        Browser automation tools
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <Link href="/contact" className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-300 hover:scale-[1.02]">
                   Contact for quote
                 </Link>
               </div>
