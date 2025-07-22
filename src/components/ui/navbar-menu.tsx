@@ -109,6 +109,12 @@ export const Menu = ({
           </div>
         </div>
         <div className="flex items-center gap-4 ml-8">
+          <Link 
+            href="/contact" 
+            className="text-sm font-medium text-black/70 hover:text-black transition-colors"
+          >
+            Contact us
+          </Link>
           {user ? (
             <Link 
               href="/dashboard" 
@@ -124,12 +130,12 @@ export const Menu = ({
               >
                 Sign in
               </Link> */}
-              <Link 
+              {/* <Link 
                 href="/login"
                 className="text-sm bg-indigo-600 text-white font-medium px-4 py-2 rounded-full hover:bg-indigo-700 transition-colors"
               >
                 Get Started
-              </Link>
+              </Link> */}
             </>
           )}
         </div>

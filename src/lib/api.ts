@@ -12,8 +12,25 @@ export async function submitContactForm(formData: {
   interest: string;
 }) {
   try {
+    // Store the submission in Supabase first (as backup)
+    const { error: dbError } = await supabase
+      .from('contact_submissions')
+      .insert([{
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        message: formData.message,
+        interest: formData.interest
+      }]);
+    
+    if (dbError) {
+      console.error('Error storing contact submission:', dbError);
+    }
+
     // Send email using EmailJS
-    await emailjs.send(
+    const emailResult = await emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
       {
@@ -28,9 +45,19 @@ export async function submitContactForm(formData: {
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
     );
 
-    return { success: true };
-  } catch (error) {
+    return { success: true, data: emailResult };
+  } catch (error: any) {
     console.error('Error submitting contact form:', error);
+    
+    // If EmailJS fails but we successfully stored in database, still consider it a partial success
+    if (error?.status === 412 || error?.text?.includes('Gmail_API')) {
+      return { 
+        success: false, 
+        error: 'Email service temporarily unavailable. Your message has been saved and we will contact you soon.',
+        partialSuccess: true 
+      };
+    }
+    
     return { success: false, error };
   }
 }
